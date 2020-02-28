@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true"  scanPeriod="60 seconds" debug="false">
+    <!-- 每个logger都关联到logger上下文，默认上下文名称为"default"。但可以设置成其它名字，用于区分不同应用程序的记录。 -->
+    <contextName>logback</contextName>
+    <!-- 日志输出格式 -->
+    <!-- %d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n -->
+    <property name="PATTERN" value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n" />
+    <!-- 文件路径 -->
+    <property name="LOG.PATH" value="springboot-logback/info.log" />
+
+    <!-- 输出到控制台 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 过滤掉ERROR级别以下的日志信息 -->
+        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>-->
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 输出到文件 -->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG.PATH}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logback.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- 每个日志文件最大10MB, 保留30天的日志文件, 但是最多总文件大小为 5GB -->
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>5GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
+
+    <!-- logger的第一种使用方式：logback为java中的包 -->
+    <logger name="com.ymdx.web" />
+
+    <!-- logger的第二种使用方式：additivity是否向上级logger传递打印信息，默认为true -->
+    <logger name="com.ymdx.web.LogbackController" level="WARN" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+
+    <!-- 测试环境+开发环境 -->
+    <springProfile name="test,dev">
+        <logger name="com.ymdx.web" level="INFO" />
+    </springProfile>
+
+    <!-- 生产环境 -->
+    <springProfile name="prod">
+        <logger name="com.ymdx.web" level="ERROR" />
+    </springProfile>
+
+</configuration>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ymdx</groupId>
+    <artifactId>ymdx-springboot</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <!-- 配置maven编译的时候采用的编译器版本 -->
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        <!-- 指定源代码是什么版本的，如果源码和这个版本不符将报错，maven中执行编译的时候会用到这个配置，默认是1.5，这个相当于javac命令后面的-source参数 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <!-- 该命令用于指定生成的class文件将保证和哪个版本的虚拟机进行兼容，maven中执行编译的时候会用到这个配置，默认是1.5，这个相当于javac命令后面的-target参数 -->
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <modules>
+        <module>springboot-hello-world</module>
+        <module>springboot-logback</module>
+        <module>springboot-log4j</module>
+        <module>springboot-web</module>
+        <module>springboot-fastjson</module>
+        <module>springboot-global-exception-interceptor</module>
+        <module>springboot-async</module>
+        <module>springboot-jsp</module>
+        <module>springboot-freemarker</module>
+        <module>springboot-thymeleaf</module>
+        <module>springboot-quartz</module>
+        <module>springboot-jdbc-template</module>
+        <module>springboot-mybatis-xml</module>
+        <module>springboot-mybatis-annotation</module>
+        <module>springboot-multi-datasource</module>
+        <module>springboot-jpa-hibernate</module>
+        <module>springboot-email</module>
+        <module>springboot-file-upload-download</module>
+        <module>springboot-neo4j</module>
+        <module>springboot-redis</module>
+        <module>springboot-mongodb</module>
+        <module>springboot-activemq</module>
+        <module>springboot-rabbitmq</module>
+        <module>springboot-kafka</module>
+        <module>springboot-solr</module>
+        <module>springboot-elasticsearch</module>
+        <module>springboot-websocket</module>
+    </modules>
+
+    <dependencies>
+        <!-- 加入以下依赖，代码做了修改，不用重新运行？？？ -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>springloaded</artifactId>
+            <version>1.2.8.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.2.4.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!--<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
