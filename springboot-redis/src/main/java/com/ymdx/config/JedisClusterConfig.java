@@ -23,7 +23,7 @@ import java.util.Set;
 @ConditionalOnClass({JedisCluster.class})
 public class JedisClusterConfig {
 
-    @Value("${spring.redis.sentinel.nodes}")
+    @Value("${spring.redis.cluster.nodes}")
     private String clusterNodes;
     @Value("${spring.redis.timeout}")
     private int timeout;
@@ -33,8 +33,6 @@ public class JedisClusterConfig {
     private int maxIdle;
     @Value("${spring.redis.jedis.pool.max-wait}")
     private long maxWaitMillis;
-    @Value("${spring.redis.password}")
-    private String password;
 
     @Bean
     public JedisCluster getJedisCluster() {
@@ -48,7 +46,7 @@ public class JedisClusterConfig {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxIdle(500);
         jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
-        JedisCluster jedisCluster = new JedisCluster(nodes, commandTimeout, timeout, maxIdle, password, jedisPoolConfig);
+        JedisCluster jedisCluster = new JedisCluster(nodes, commandTimeout, timeout, maxIdle, jedisPoolConfig);
         return jedisCluster;
     }
 

@@ -1419,7 +1419,7 @@ protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 spring.redis.database=0
 spring.redis.host=172.16.49.131
 spring.redis.port=6379
-spring.redis.password=devRedis&123
+spring.redis.password=123456
 # 连接池最大连接数（使用负值表示没有限制）
 spring.redis.pool.max-active=1000
 # 连接池最大阻塞等待时间（使用负值表示没有限制）
@@ -1457,10 +1457,7 @@ public User findUserByName(String name) {
 - 全局配置文件
 ```
 # redis集群配置
-spring.redis.sentinel.master=master
-spring.redis.sentinel.nodes=172.16.49.131:7000,172.16.49.131:7001,172.16.49.131:7002,172.16.49.132:7000,172.16.49.132:7001,172.16.49.132:7002,172.16.49.133:7000,172.16.49.133:7001,172.16.49.133:7002
-spring.redis.password=devRedis&123
-
+spring.redis.cluster.nodes=172.16.49.131:8000,172.16.49.131:8001,172.16.49.131:8002,172.16.49.131:8003,172.16.49.131:8004,172.16.49.131:8005
 # 连接池最大连接数（使用负值表示没有限制）
 spring.redis.jedis.pool.max-active=1000
 # 连接池最大阻塞等待时间（使用负值表示没有限制）
@@ -1480,34 +1477,32 @@ spring.redis.commandTimeout=50000
 @ConditionalOnClass({JedisCluster.class})
 public class JedisClusterConfig {
 
-  @Value("${spring.redis.sentinel.nodes}")
-  private String clusterNodes;
-  @Value("${spring.redis.timeout}")
-  private int timeout;
-  @Value("${spring.redis.commandTimeout}")
-  private int commandTimeout;
-  @Value("${spring.redis.jedis.pool.max-idle}")
-  private int maxIdle;
-  @Value("${spring.redis.jedis.pool.max-wait}")
-  private long maxWaitMillis;
-  @Value("${spring.redis.password}")
-  private String password;
+    @Value("${spring.redis.cluster.nodes}")
+    private String clusterNodes;
+    @Value("${spring.redis.timeout}")
+    private int timeout;
+    @Value("${spring.redis.commandTimeout}")
+    private int commandTimeout;
+    @Value("${spring.redis.jedis.pool.max-idle}")
+    private int maxIdle;
+    @Value("${spring.redis.jedis.pool.max-wait}")
+    private long maxWaitMillis;
 
-  @Bean
-  public JedisCluster getJedisCluster(){
-      String[] cNodes=clusterNodes.split(",");
-      Set<HostAndPort> nodes=new HashSet<HostAndPort>();
-      // 分割出集群点
-      for(String node:cNodes){
-          String[] hp=node.split(":");
-          nodes.add(new HostAndPort(hp[0], Integer.parseInt(hp[1])));
-      }
-      JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-      jedisPoolConfig.setMaxIdle(500);
-      jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
-      JedisCluster jedisCluster=new JedisCluster(nodes, commandTimeout, timeout, maxIdle, password, jedisPoolConfig);
-      return jedisCluster;
-  }
+    @Bean
+    public JedisCluster getJedisCluster() {
+        String[] cNodes = clusterNodes.split(",");
+        Set<HostAndPort> nodes = new HashSet<HostAndPort>();
+        // 分割出集群点
+        for (String node : cNodes) {
+            String[] hp = node.split(":");
+            nodes.add(new HostAndPort(hp[0], Integer.parseInt(hp[1])));
+        }
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        jedisPoolConfig.setMaxIdle(500);
+        jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
+        JedisCluster jedisCluster = new JedisCluster(nodes, commandTimeout, timeout, maxIdle, jedisPoolConfig);
+        return jedisCluster;
+    }
 
 }
 ```
