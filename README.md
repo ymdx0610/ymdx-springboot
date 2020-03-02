@@ -1669,7 +1669,6 @@ public class MyReceiver {
 <dependency>
     <groupId>org.springframework.kafka</groupId>
     <artifactId>spring-kafka</artifactId>
-    <version>2.2.8.RELEASE</version>
 </dependency>
 ```
 - 全局配置文件
