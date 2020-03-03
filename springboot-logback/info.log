@@ -1,37 +1,26 @@
-2020-02-25 13:33:30.815 |-DEBUG [main] org.springframework.web.context.ContextLoader [278] -| Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
-2020-02-25 13:33:30.817 |-INFO  [main] org.springframework.web.context.ContextLoader [284] -| Root WebApplicationContext: initialization completed in 603 ms
-2020-02-25 13:33:30.926 |-DEBUG [main] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [615] -| ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2020-02-25 13:33:30.956 |-DEBUG [main] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [351] -| 3 mappings in 'requestMappingHandlerMapping'
-2020-02-25 13:33:30.971 |-DEBUG [main] org.springframework.web.servlet.handler.SimpleUrlHandlerMapping [173] -| Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2020-02-25 13:33:30.975 |-DEBUG [main] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [297] -| ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2020-02-25 13:33:54.964 |-INFO  [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [525] -| Initializing Servlet 'dispatcherServlet'
-2020-02-25 13:33:54.964 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [526] -| Detected StandardServletMultipartResolver
-2020-02-25 13:33:54.968 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [542] -| enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2020-02-25 13:33:54.968 |-INFO  [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [547] -| Completed initialization in 4 ms
-2020-02-25 13:33:54.975 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [91] -| GET "/show", parameters={}
-2020-02-25 13:33:54.978 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [414] -| Mapped to com.ymdx.web.TestController#show()
-2020-02-25 13:33:54.984 |-WARN  [http-nio-8080-exec-1] com.ymdx.web.TestController [25] -| warn日志
-2020-02-25 13:33:54.984 |-ERROR [http-nio-8080-exec-1] com.ymdx.web.TestController [26] -| error日志
-2020-02-25 13:33:54.997 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [273] -| Using 'text/html', given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
-2020-02-25 13:33:54.998 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [91] -| Writing ["show"]
-2020-02-25 13:33:55.004 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [1131] -| Completed 200 OK
-2020-02-25 13:40:02.936 |-DEBUG [main] org.springframework.web.context.ContextLoader [278] -| Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
-2020-02-25 13:40:02.938 |-INFO  [main] org.springframework.web.context.ContextLoader [284] -| Root WebApplicationContext: initialization completed in 554 ms
-2020-02-25 13:40:03.044 |-DEBUG [main] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [615] -| ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2020-02-25 13:40:03.072 |-DEBUG [main] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [351] -| 6 mappings in 'requestMappingHandlerMapping'
-2020-02-25 13:40:03.086 |-DEBUG [main] org.springframework.web.servlet.handler.SimpleUrlHandlerMapping [173] -| Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2020-02-25 13:40:03.091 |-DEBUG [main] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [297] -| ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2020-02-25 13:40:14.943 |-INFO  [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [525] -| Initializing Servlet 'dispatcherServlet'
-2020-02-25 13:40:14.944 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [526] -| Detected StandardServletMultipartResolver
-2020-02-25 13:40:14.948 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [542] -| enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2020-02-25 13:40:14.948 |-INFO  [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [547] -| Completed initialization in 4 ms
-2020-02-25 13:40:14.954 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [91] -| GET "/ok", parameters={}
-2020-02-25 13:40:14.957 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [414] -| Mapped to com.ymdx.web.SpringController#ok()
-2020-02-25 13:40:14.975 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [273] -| Using 'text/html', given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
-2020-02-25 13:40:14.975 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [91] -| Writing ["ok"]
-2020-02-25 13:40:14.982 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [1131] -| Completed 200 OK
-2020-02-25 13:41:24.481 |-DEBUG [http-nio-8080-exec-4] org.springframework.web.servlet.DispatcherServlet [91] -| GET "/hello", parameters={}
-2020-02-25 13:41:24.481 |-DEBUG [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [414] -| Mapped to com.ymdx.web.SpringController#hello()
-2020-02-25 13:41:24.483 |-DEBUG [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [273] -| Using 'text/html', given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
-2020-02-25 13:41:24.483 |-DEBUG [http-nio-8080-exec-4] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [91] -| Writing ["hello"]
-2020-02-25 13:41:24.484 |-DEBUG [http-nio-8080-exec-4] org.springframework.web.servlet.DispatcherServlet [1131] -| Completed 200 OK
+2020-03-03 13:30:07.540 |-DEBUG [restartedMain] org.springframework.web.context.ContextLoader [278] -| Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2020-03-03 13:30:07.543 |-INFO  [restartedMain] org.springframework.web.context.ContextLoader [284] -| Root WebApplicationContext: initialization completed in 1216 ms
+2020-03-03 13:30:07.875 |-DEBUG [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [615] -| ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2020-03-03 13:30:07.933 |-DEBUG [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [351] -| 3 mappings in 'requestMappingHandlerMapping'
+2020-03-03 13:30:07.977 |-DEBUG [restartedMain] org.springframework.web.servlet.handler.SimpleUrlHandlerMapping [173] -| Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2020-03-03 13:30:07.988 |-DEBUG [restartedMain] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [297] -| ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2020-03-03 13:31:10.534 |-DEBUG [restartedMain] org.springframework.web.context.ContextLoader [278] -| Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2020-03-03 13:31:10.537 |-INFO  [restartedMain] org.springframework.web.context.ContextLoader [284] -| Root WebApplicationContext: initialization completed in 884 ms
+2020-03-03 13:31:10.829 |-DEBUG [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [615] -| ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2020-03-03 13:31:10.865 |-DEBUG [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [351] -| 3 mappings in 'requestMappingHandlerMapping'
+2020-03-03 13:31:10.896 |-DEBUG [restartedMain] org.springframework.web.servlet.handler.SimpleUrlHandlerMapping [173] -| Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2020-03-03 13:31:10.904 |-DEBUG [restartedMain] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [297] -| ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2020-03-03 13:31:51.400 |-INFO  [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [525] -| Initializing Servlet 'dispatcherServlet'
+2020-03-03 13:31:51.401 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [526] -| Detected StandardServletMultipartResolver
+2020-03-03 13:31:51.411 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [542] -| enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2020-03-03 13:31:51.411 |-INFO  [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [547] -| Completed initialization in 10 ms
+2020-03-03 13:31:51.420 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [91] -| GET "/show", parameters={}
+2020-03-03 13:31:51.424 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [414] -| Mapped to com.ymdx.web.TestController#show(String, String)
+2020-03-03 13:31:51.469 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [273] -| Using 'text/html', given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2020-03-03 13:31:51.469 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [91] -| Writing ["name = null; age = null"]
+2020-03-03 13:31:51.475 |-DEBUG [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet [1131] -| Completed 200 OK
+2020-03-03 13:32:19.578 |-DEBUG [http-nio-8080-exec-2] org.springframework.web.servlet.DispatcherServlet [91] -| GET "/show?name=1&age-2", parameters={masked}
+2020-03-03 13:32:19.579 |-DEBUG [http-nio-8080-exec-2] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [414] -| Mapped to com.ymdx.web.TestController#show(String, String)
+2020-03-03 13:32:19.582 |-DEBUG [http-nio-8080-exec-2] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [273] -| Using 'text/html', given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2020-03-03 13:32:19.582 |-DEBUG [http-nio-8080-exec-2] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [91] -| Writing ["name = 1; age = null"]
+2020-03-03 13:32:19.583 |-DEBUG [http-nio-8080-exec-2] org.springframework.web.servlet.DispatcherServlet [1131] -| Completed 200 OK

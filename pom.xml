@@ -47,6 +47,7 @@
         <module>springboot-solr</module>
         <module>springboot-elasticsearch</module>
         <module>springboot-websocket</module>
+        <module>springboot-aop-global-log</module>
     </modules>
 
     <dependencies>
