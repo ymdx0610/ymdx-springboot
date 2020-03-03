@@ -23,7 +23,6 @@ public class User {
     private String about;
     private List<String> interests;
 
-
     public Long getId() {
         return id;
     }
