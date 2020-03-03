@@ -2083,6 +2083,21 @@ public class WebLogAspect {
 ...  
 ```
 
+> 50.SpringBoot分布式事务管理（基于jta-atomikos的传统分布式事务解决方案）
+
+- 依赖
+```
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-jta-atomikos</artifactId>
+</dependency>
+```
+- 示例代码，参见工程：springboot-jta-atomikos
+
+
+
+
+
 
 
   

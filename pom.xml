@@ -49,6 +49,7 @@
         <module>springboot-websocket</module>
         <module>springboot-aop-global-log</module>
         <module>springboot-lombok</module>
+        <module>springboot-jta-atomikos</module>
     </modules>
 
     <dependencies>
