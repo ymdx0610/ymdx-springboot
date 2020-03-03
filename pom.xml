@@ -48,6 +48,7 @@
         <module>springboot-elasticsearch</module>
         <module>springboot-websocket</module>
         <module>springboot-aop-global-log</module>
+        <module>springboot-lombok</module>
     </modules>
 
     <dependencies>
