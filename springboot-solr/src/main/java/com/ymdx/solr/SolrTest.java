@@ -21,7 +21,7 @@ import java.util.UUID;
 public class SolrTest {
 
     public static void main(String[] args) throws IOException, SolrServerException {
-        String solrUrl = "http://172.16.49.136:8983/solr/new_core";
+        String solrUrl = "http://172.16.49.131:8983/solr/new_core";
         HttpSolrClient client = new HttpSolrClient.Builder(solrUrl).build();
         System.out.println("============= add doc =============");
         Collection<SolrInputDocument> docs = new ArrayList<>();

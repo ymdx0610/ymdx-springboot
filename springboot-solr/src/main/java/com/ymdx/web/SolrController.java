@@ -25,7 +25,7 @@ public class SolrController {
 
     @RequestMapping("/solr")
     public String test() throws IOException, SolrServerException {
-        SolrDocument doc = solrClient.getById("2aef49e5-815d-4c8c-8841-533657dcf311");
+        SolrDocument doc = solrClient.getById("f43cd47d-fdf4-4a93-b68a-63791c67b014");
         return doc.toString();
     }
 
