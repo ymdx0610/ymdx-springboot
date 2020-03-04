@@ -1,5 +1,6 @@
 package com.ymdx.web;
 
+import com.github.pagehelper.PageInfo;
 import com.ymdx.pojo.User;
 import com.ymdx.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,10 @@ public class UserController {
     }
 
     @RequestMapping("/findUsers/{pageNum}/{pageSize}")
-    public List<User> findUsers(@PathVariable int pageNum, @PathVariable int pageSize){
-        return userService.findUsers(pageNum, pageSize);
+    public PageInfo<User> findUsers(@PathVariable int pageNum, @PathVariable int pageSize){
+        List<User> users = userService.findUsers(pageNum, pageSize);
+        PageInfo<User> pageInfo = new PageInfo<>(users);
+        return pageInfo;
     }
 
 }

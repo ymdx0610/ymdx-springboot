@@ -2125,6 +2125,191 @@ public class WebLogAspect {
     </plugins>
 </build>
 ```
+> 52.SpringBoot热部署
+
+- 热部署原理  
+
+spring-boot-devtools 是一个为开发者服务的一个模块，其中最重要的功能就是自动将应用代码更改到最新的App上面去。
+原理是在发现代码有更改之后，重新启动应用，但是速度比手动停止后再启动还要更快，更快指的不是节省出来的手工操作的时间。
+其深层原理是使用了两个ClassLoader，一个Classloader加载那些不会改变的类（第三方Jar包），另一个ClassLoader加载会更改的类，
+称为restart ClassLoader，这样在有代码更改的时候，原来的restart ClassLoader被丢弃，重新创建一个restart ClassLoader，
+由于需要加载的类相比较少，所以实现了较快的重启时间（5秒以内）  
+
+- 依赖  
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
+    <scope>true</scope>
+</dependency>
+```
+
+- devtools原理  
+1. devtools会监听classpath下的文件变动，并且会立即重启应用（发生在保存时机），注意：因为其采用的虚拟机机制，该项重启是很快的。  
+2. devtools可以实现页面热部署（即页面修改后会立即生效，这个可以直接在application.properties文件中配置spring.thymeleaf.cache=false来实现（这里注意不同的模板配置不一样）  
+
+> 53.SpringBoot性能优化
+
+- 扫包优化（影响启动速度）    
+默认情况下，使用 @SpringBootApplication 注解来自动获取应用的配置信息，但这样也会给应用带来一些副作用。
+使用这个注解后，会触发自动配置（ auto-configuration ）和 组件扫描 （ component scanning ），
+这跟使用 @Configuration、@EnableAutoConfiguration 和 @ComponentScan 三个注解的作用是一样的。
+这样做给开发带来方便的同时，也会有三方面的影响：  
+1. 会导致项目启动时间变长。当启动一个大的应用程序，或将做大量的集成测试启动应用程序时，影响会特别明显。  
+2. 会加载一些不需要的多余的实例（beans）。  
+3. 会增加 CPU 消耗。  
+```java
+// @SpringBootApplication
+@Configuration
+// 指定扫描包，避免扫描装载多余的包
+@ComponentScan(basePackages={"com.ymdx.dao", "com.ymdx.service", "com.ymdx.web"})
+@EnableAutoConfiguration
+public class App {
+
+	public static void main(String[] args) {
+		SpringApplication.run(App.class, args);
+	}
+
+}
+```
+
+- SpringBoot JVM参数调优（影响运行时性能）  
+这个根据服务器的内存大小，来设置堆参数。  
+-Xms :设置Java堆栈的初始化大小  
+-Xmx :设置最大的java堆大小  
+例如：  
+```
+# 配置jvm参数
+-XX:+PrintGCDetails -Xmx32M -Xms1M  
+-XX:+PrintGCDetails -Xmx1024M -Xms1024M   
+
+# 启动springboot.jar
+java -server -Xmx32m -Xm32m -jar xxx.jar  
+```
+
+- 将Servlet容器变成Undertow  
+默认情况下，Spring Boot 使用 Tomcat 来作为内嵌的 Servlet 容器  
+可以将 Web 服务器切换到 Undertow 来提高应用性能。Undertow 是一个采用 Java 开发的灵活的高性能 Web 服务器，提供包括阻塞和基于 NIO 的非堵塞机制。
+Undertow 是红帽公司的开源产品，是 Wildfly 默认的 Web 服务器。首先，从依赖信息里移除 Tomcat 配置：  
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+```
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-undertow</artifactId>
+</dependency>
+```
+
+> 54.SpringBoot监控管理
+
+- Actuator监控应用  
+Actuator是spring boot的一个附加功能，可帮助你在应用程序生产环境时监视和管理应用程序。可以使用HTTP的各种请求来监管、审计、收集应用的运行情况，特别对于微服务管理十分有意义。  
+缺点：没有可视化界面。  
+
+- 依赖  
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+
+- yml配置  
+```
+spring:
+  profiles:
+    active: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ymdx-springboot
+    username: root
+    password: 123456
+
+##通过下面的配置启用所有的监控端点，默认情况下，这些端点是禁用的；
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+## 自定义info信息
+info:
+  test1: 123
+    test3: 789
+  test2: 456
+```
+
+- Actuator常用访问路径  
+
+|路径|作用|
+|:----|:----|
+|/actuator/beans|显示应用程序中所有Spring bean的完整列表|
+|/actuator/configprops|显示所有配置信息|
+|/actuator/env|陈列所有的环境变量|
+|/actuator/mappings|显示所有@RequestMapping的url整理列表|
+|/actuator/health|显示应用程序运行状况信息：up表示成功，down失败|
+|/actuator/info|查看自定义应用信息|
+
+- Admin-UI分布式微服务监控中心  
+Admin-UI基于actuator实现，提供界面展示监控信息  
+示例工程：springboot-admin-ui-server、springboot-admin-ui-client  
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-starter-server</artifactId>
+        <version>2.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-webflux</artifactId>
+    </dependency>
+    <!-- Spring Boot Actuator对外暴露应用的监控信息，Jolokia提供使用HTTP接口获取JSON格式数据 -->
+    <dependency>
+        <groupId>org.jolokia</groupId>
+        <artifactId>jolokia-core</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <!-- fastjson的依赖 -->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.62</version>
+    </dependency>
+</dependencies>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

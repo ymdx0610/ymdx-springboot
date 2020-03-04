@@ -50,6 +50,9 @@
         <module>springboot-aop-global-log</module>
         <module>springboot-lombok</module>
         <module>springboot-jta-atomikos</module>
+        <module>springboot-actuator</module>
+        <module>springboot-admin-ui-server</module>
+        <module>springboot-admin-ui-client</module>
     </modules>
 
     <dependencies>

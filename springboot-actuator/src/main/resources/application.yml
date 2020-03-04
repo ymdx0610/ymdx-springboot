@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ymdx-springboot
+    username: root
+    password: 123456
+##通过下面的配置启用所有的监控端点，默认情况下，这些端点是禁用的；
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+## 自定义info信息
+info:
+  test1: 123
+  test2: 456
