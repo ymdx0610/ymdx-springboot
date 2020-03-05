@@ -2245,7 +2245,6 @@ management:
 ## 自定义info信息
 info:
   test1: 123
-    test3: 789
   test2: 456
 ```
 
@@ -2293,27 +2292,21 @@ Admin-UI基于actuator实现，提供界面展示监控信息
 </dependencies>
 ```
 
+> 55.手写SpringBoot框架（简单实现）  
 
+Spring Boot让Spring应用变的更轻量化。比如：可以仅仅依靠一个Java类来运行一个Spring引用。也可以打包你的应用为jar并通过使用java -jar来运行你的Spring Web应用。  
+Spring Boot的主要优点：  
+1. 使所有Spring开发者更快的入门  
+2. 开箱即用，提供各种默认配置来简化项目配置  
+3. 内嵌式容器简化Web项目  
+4. 没有冗余代码生成和XML配置的要求  
 
+- SpringBoot核心原理  
+基于SpringMVC无配置文件（纯Java）完全注解化 + 内置tomcat-embed-core实现SpringBoot框架，Main函数启动。  
+SpringBoot核心快速整合第三方框架原理：Maven继承依赖关系
+SpringBoot内嵌tomcat-embed-core  
+SpringBoot采用SpringMVC注解版本实现无配置效果  
 
+- 示例工程：ymdx-springboot-mvc  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 

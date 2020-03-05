@@ -53,6 +53,7 @@
         <module>springboot-actuator</module>
         <module>springboot-admin-ui-server</module>
         <module>springboot-admin-ui-client</module>
+        <module>ymdx-springboot-mvc</module>
     </modules>
 
     <dependencies>
