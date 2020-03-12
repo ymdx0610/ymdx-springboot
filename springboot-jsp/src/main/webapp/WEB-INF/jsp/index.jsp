@@ -29,6 +29,9 @@
 
 <body>
     ${name}
+
+    <!-- 演示静态分离 -->
+    <%--<h1><img alt="" src="http://static.ymdx.com/static/imgs/ymdx.jpg" /></h1>--%>
 </body>
 
 </html>
